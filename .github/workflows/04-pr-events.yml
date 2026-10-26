@@ -3,7 +3,7 @@ name: 04 Workflow PR events
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize]
+    types: [opened, reopened, synchronize]
 
 
 jobs:
