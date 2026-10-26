@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event == 'push' }}
     steps:
+      - run: echo ${{ github.event }}
       - run: echo "This is a Lint job"
   test:
     needs: [lint]
