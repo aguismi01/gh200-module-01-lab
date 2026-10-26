@@ -14,4 +14,4 @@ jobs:
         run: echo $GITHUB_EVENT_NAME
 
       - name: Display activity name
-        run: echo ${{ github.event.action_name }}
+        run: echo ${{ toJson(github.event) }}
