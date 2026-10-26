@@ -1,0 +1,14 @@
+name: Workflow PR events
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display message
+        run: echo "Hello world !"
