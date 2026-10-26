@@ -1,0 +1,19 @@
+name: Manual basics workflow
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v4
+
+      - name: Display a message
+        run: echo "Hello world"
+      
+      - name: List files
+        run: ls -la
+      
+        
