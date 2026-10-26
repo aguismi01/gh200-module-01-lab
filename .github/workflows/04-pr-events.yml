@@ -1,0 +1,23 @@
+name: 04 Workflow PR events
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Event name
+        run: echo $GITHUB_EVENT_NAME
+
+      - name: Display activity name
+        run: echo ${{ github.event.action }}
+
+      - name: Display head branch
+        run: echo ${{ github.head_ref }}
+
+      - name: Display base branch
+        run: echo ${{ github.base_ref }}
