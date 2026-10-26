@@ -1,0 +1,64 @@
+name: 23 Capstone
+run-name: "Capstone workflow #${{ github.run_number }}—${{ github.event_name }}"
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+  pull_request_target:
+    branches: [main]
+    types: [opened, sychronized]
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        required: true
+        options:
+          - dev
+          - staging
+  
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      
+      - name: Install dependencies
+        run: npm install
+    
+      - name: Run test
+        id: test
+        run: npm test
+          
+      - name: Test outcome
+        run: echo Test step outcome ${{ steps.test.outcome }}
+
+  report:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Display test result
+        run: "Job Test result: ${{needs.test.result}}"
+
+      - name: Display some infos
+        run: |
+          echo "Event name : ${{github.event_name}}"
+          echo "Ref : ${{github.ref}}"
+          echo "Runner OS : ${{runner.os}}"
+      - name: Set a var
+        run: |
+          echo "COLOR=blue" >> $GITHUB_ENV
+          echo "COLOR : $COLOR"
+
+      - name: read var
+        run: echo $COLOR

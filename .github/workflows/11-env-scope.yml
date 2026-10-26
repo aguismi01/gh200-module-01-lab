@@ -1,0 +1,34 @@
+name: ENV scope workflow
+
+on:
+  push:
+
+env:
+  MESSAGE: Hello1 
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        run: |
+          echo ${{ env.MESSAGE }}
+
+  inspect1:
+    runs-on: ubuntu-latest
+    needs: [inspect]
+    env:
+      MESSAGE: Hello2
+    steps:
+      - name: Display MESSAGE
+        run: echo ${{ env.MESSAGE }}
+  
+      - name: Set env var
+        env:
+          MESSAGE: Hello3
+        run: echo ${{ env.MESSAGE }}
+      
+      - name: Set GITHUB_ENV
+        env:
+          GITHUB_ENV: TOKEN
+        run: echo $GITHUB_ENV 
