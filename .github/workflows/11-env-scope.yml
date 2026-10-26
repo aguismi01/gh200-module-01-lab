@@ -31,4 +31,4 @@ jobs:
       - name: Set GITHUB_ENV
         env:
           GITHUB_ENV: TOKEN
-        run: echo ${{ env.GITHUB_ENV }} 
+        run: echo $GITHUB_ENV 
