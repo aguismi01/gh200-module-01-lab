@@ -8,7 +8,7 @@ on:
       - "docs/**"
   pull_request_target:
     branches: [main]
-    types: [opened, sychronized]
+    types: [opened, synchronize]
   workflow_dispatch:
     inputs:
       environment:
@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: Display test result
         run: |
-          echo "Job Test result: ${{ needs.test.result }}""
+          echo "Job Test result: ${{ needs.test.result }}"
 
       - name: Display some infos
         run: |
