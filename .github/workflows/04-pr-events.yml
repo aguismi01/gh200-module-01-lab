@@ -15,3 +15,6 @@ jobs:
 
       - name: Display activity name
         run: echo ${{ github.event.action }}
+
+      - name: Display head branch
+        run: echo ${{ github.head_ref }}
