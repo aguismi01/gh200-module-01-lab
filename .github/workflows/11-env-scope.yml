@@ -27,3 +27,11 @@ jobs:
         env:
           MESSAGE: Hello3
         run: echo ${{ env.MESSAGE }}
+      
+      - name: Set GITHUB_ENV
+        env:
+          - GITHUB_ENV: TOKEN
+
+      - name: Display GITHUB_ENV
+        run: echo ${{ env.GITHUB_ENV }}
+  
