@@ -1,4 +1,4 @@
-name: Workflow PR events
+name: 04 Workflow PR events
 
 on:
   pull_request:
@@ -10,5 +10,5 @@ jobs:
   inspect:
     runs-on: ubuntu-latest
     steps:
-      - name: Display message
-        run: echo "Hello world !"
+      - name: Display Event name
+        run: echo $GITHUB_EVENT_NAME
