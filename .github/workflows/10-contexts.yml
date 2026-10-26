@@ -1,0 +1,27 @@
+name: 10-Contexts
+
+on:
+  push
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display infos
+        run: |
+          echo ${{ github.event_name }}
+          echo ${{ github.ref }}
+          echo ${{ github.sha }}
+          echo ${{ github.event.action }}
+      - name: Step 1
+        id: step-1
+        run: echo "Step-1"
+
+      - name: Show step outcome
+        run: echo "Step result is ${{ steps.step-1.outcome }}"
+  report:
+    needs: inspect
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show job result
+        run: echo "Inspect job result is ${{ needs.inspect.result }}"   
