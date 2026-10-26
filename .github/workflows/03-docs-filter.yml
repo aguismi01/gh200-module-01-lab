@@ -1,0 +1,14 @@
+name: 03 Push path filters workflow
+
+on:
+  push:
+    branches:
+      - practice
+    paths:
+      - "docs/**"
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello"
