@@ -1,0 +1,40 @@
+name: 06 Manual inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        required: true
+        options:
+          - dev
+          - staging
+      dry_run:
+        type: boolean
+        required: false
+        default: true
+      retry_count:
+        type: number
+        required: false
+      message:
+        type: string
+        required: false
+      
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dry-run
+        if: ${{ inputs.dry_run == true }}
+        run: echo "DRY RUN would deploy to dev.
+
+      - name: real-run simulation
+        if: ${{ inputs.dry_run == false }}
+        run: echo "SIMULATION deployment selected for dev."
+
+      - run: |
+          echo ${{ inputs.environment }}
+          echo "${{ inputs.dry_run }}, ${{ github.event.inputs.dry_run }}"
+          echo ${{ inputs.retry_count }}
+          echo ${{ inputs.message }}
