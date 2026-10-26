@@ -1,0 +1,10 @@
+name: 05 release filter
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
