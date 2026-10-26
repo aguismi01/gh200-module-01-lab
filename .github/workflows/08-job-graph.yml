@@ -7,7 +7,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    if: ${{ github.event == 'push' }}
+    # if: ${{ github.event == 'push' }}
     steps:
       - run: echo ${{ github.event }}
       - run: echo "This is a Lint job"
