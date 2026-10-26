@@ -9,10 +9,12 @@ jobs:
     steps:
       - name: Display infos
         run: |
-          echo ${{ github.event_name }}
-          echo ${{ github.ref }}
-          echo ${{ github.sha }}
-          echo ${{ github.event.action }}
+          echo "Github event name: ${{ github.event_name }}"
+          echo "Github ref: ${{ github.ref }}"
+          echo "Github Sha: ${{ github.sha }}" 
+          echo "Github event action: ${{ github.event.action }}"
+      - name: Runner OS
+        run: echo 'Runner OS is ${{ runner.os }}'
       - name: Step 1
         id: step-1
         run: echo "Step-1"
@@ -24,4 +26,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Show job result
-        run: echo "Inspect job result is ${{ needs.inspect.result }}"   
+        run: echo "Inspect job result is ${{ needs.inspect.result }}"
+    
+  
