@@ -2,7 +2,6 @@ name: 08 Job Graph workflow
 
 on:
   push:
-    branches: [main]
 
 jobs:
   lint:
