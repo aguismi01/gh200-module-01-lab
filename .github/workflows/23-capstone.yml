@@ -48,7 +48,8 @@ jobs:
     needs: [test]
     steps:
       - name: Display test result
-        run: "Job Test result: ${{needs.test.result}}"
+        run: |
+          echo "Job Test result: ${{ needs.test.result }}""
 
       - name: Display some infos
         run: |
