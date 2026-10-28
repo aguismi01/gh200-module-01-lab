@@ -21,4 +21,4 @@ jobs:
       - name: install
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm ci
+        run: npm i
