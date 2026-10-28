@@ -1,0 +1,9 @@
+on: workflow_dispatch
+
+jobs:
+  test:
+    uses: ./.github/workflows/18-reusable.yml
+    with:
+      node_version: 24
+    secrets:
+      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
