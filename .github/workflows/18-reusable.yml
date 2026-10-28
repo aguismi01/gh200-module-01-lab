@@ -6,6 +6,9 @@ on:
       node_version:
         required: true
         type: string
+    outputs:
+      label_name:
+        value: ${{ jobs.test.outputs.label }}
     secrets:
       NPM_TOKEN:
         required: true
@@ -13,6 +16,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      label: ${{ steps.build-label.outputs.label }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v7
@@ -22,3 +27,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm i
+
+      - name: Set a label output 
+        id: build-label
+        run: echo "label=build-v1" >> $GITHUB_OUTPUT
